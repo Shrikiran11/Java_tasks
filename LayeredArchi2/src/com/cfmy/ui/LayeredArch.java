@@ -1,5 +1,5 @@
 package com.cfmy.ui;
-
+//2022-09-09T09:09:09
 
 
 import java.time.LocalDateTime;
@@ -23,7 +23,7 @@ public class LayeredArch {
 		System.err.println("Enter ur choice!!!");
 		int option =scan.nextInt();
 		ITheaterService iserv=new TheaterServiceImpl();
-		
+		ITheaterService its=new TheaterServiceImpl();
 		switch(option) {
 		case 1:
 			System.out.println("enter name of the theater");
@@ -34,21 +34,34 @@ public class LayeredArch {
 			String loc=scan.next();
 			System.out.println("enter show date&time");
 			String tdate=scan.next();
-			
-			
 			LocalDateTime ldt=LocalDateTime.parse(tdate);
-			
 			Theater theater=new Theater(name,loc,screens,ldt);
-		
-			iserv.addTheater(theater);
+			its.addTheater(theater);
 				break;
 		case 2:
-			
+			int val=scan.nextInt();
+			its.deleteTheater(val);
 			break;
-		case 3: break;
-			
+		case 3: 
+			System.out.println("what do want to update 1:name 2:no of screens 3:location 4:date");
+			System.out.println("Enter the choice 1 or 2");
+			int number =scan.nextInt();
+			System.out.println("Enter tid to update");
+			int tid=scan.nextInt();
+			its.updateTheater(tid,number);
+			break;
+		case 4:
+			System.out.println("Enter name to search");
+			String nam=scan.next();
+			System.out.println(its.getByName(nam));
+			break;
+		case 5:
+			System.out.println("Enter id to search");
+			int idi=scan.nextInt();
+			System.out.println(its.getById(idi));
+			break;
 		case 6:
-			iserv.getAll();
+			its.getAll();
 			break;
 			default:
 				System.exit(10);

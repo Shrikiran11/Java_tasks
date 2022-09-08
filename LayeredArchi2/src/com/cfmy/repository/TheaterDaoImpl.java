@@ -1,20 +1,21 @@
 package com.cfmy.repository;
-
+import java.util.*;
 
 import java.util.HashMap;
 
 import com.cfmy.model.Theater;
 
 public class TheaterDaoImpl  implements ITheaterDao{
-	
+	ArrayList<Theater> arrL=new ArrayList();
 
 	@Override
-	public int addTheater(Theater theater) {
+	public ArrayList<Theater> addTheater(Theater theater) {
 		 HashMap<Integer,Theater> tList=new HashMap();
 		//System.out.println("in dao -> "+theater);
 		tList.put(theater.getTid(), theater);
+		arrL.add(theater);
 		//System.out.println(tList);
-		return 0;
+		return arrL;
 	}
 
 	@Override
@@ -42,9 +43,9 @@ public class TheaterDaoImpl  implements ITheaterDao{
 	}
 
 	@Override
-	public HashMap<Integer, Theater> getAll() {
+	public ArrayList< Theater> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return arrL;
 	}
 
 }
